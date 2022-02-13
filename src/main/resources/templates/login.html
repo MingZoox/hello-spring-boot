@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<h2>Login Page</h2>
+<div class="login">
+    <form method="post" th:action="@{/perform_login}">
+        <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label class="form-check-label" for="remember-me">Tự động đăng nhập</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
