@@ -6,6 +6,13 @@
 </head>
 <body>
 <h2>Login Page</h2>
+
+<form action="/signin/facebook" method="POST">
+    <input type="hidden" name="scope" value="public_profile" />
+    <input type="submit" value="Login using Facebook"/>
+</form>
+
+<h3>OR</h3>
 <div class="login">
     <form method="post" th:action="@{/perform_login}">
         <div class="form-group">
