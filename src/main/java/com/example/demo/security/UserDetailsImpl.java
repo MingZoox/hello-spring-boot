@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.security;
 
 import com.example.demo.entity.User;
 import lombok.AllArgsConstructor;

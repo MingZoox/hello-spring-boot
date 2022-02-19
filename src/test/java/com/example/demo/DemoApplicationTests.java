@@ -1,11 +1,23 @@
 package com.example.demo;
 
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.security.JwtUtils;
+import com.example.demo.security.UserDetailsImpl;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.transaction.Transactional;
 
 @SpringBootTest
 class DemoApplicationTests {
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	JwtUtils jwtUtils;
 
 	@Test
 	void contextLoads() {
@@ -13,14 +25,13 @@ class DemoApplicationTests {
 	}
 
 	@Test
-	void one () {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode("a");
+	@Transactional
+	void test () {
+		String username="b@gmail.com";
 
-		System.out.println(encodedPassword);
-		encodedPassword = passwordEncoder.encode("b");
-
-		System.out.println(encodedPassword);
+		User user = userRepository.findByUsername(username);
+		UserDetailsImpl userDetails = new UserDetailsImpl(user);
+		System.out.println(jwtUtils.generateJwtToken(userDetails));
 	}
 
 }
