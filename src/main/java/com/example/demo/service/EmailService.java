@@ -7,6 +7,8 @@ import com.example.demo.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -35,9 +37,7 @@ public class EmailService {
     public void sendVerificationEmail(User newUser) {
         String token = jwtUtils.generateJwtToken(new UserDetailsImpl(newUser));
         String subject = "Registration Confirmation";
-        String uriVerified = ServletUriComponentsBuilder
-                .fromCurrentContextPath().toUriString();
-        uriVerified = uriVerified + "/registration-confirm?token=" + token;
+        String uriVerified = "http://localhost:8080/registration-confirm?token=" + token;
         String text = "Please confirm your email !! \n" + uriVerified;
         sendSimpleMessage(newUser.getUsername(), subject, text);
     }
@@ -51,6 +51,7 @@ public class EmailService {
         return false;
     }
 
+    @Async
     public void resendVerificationEmail (String username) {
         User user = userRepository.findByUsername(username);
         sendVerificationEmail(user);

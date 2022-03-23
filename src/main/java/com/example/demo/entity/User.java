@@ -27,10 +27,9 @@ public class User {
     @Column(nullable = false)
     private boolean enabled = false;
 
-    @Lob
-    private byte[] avatar;
+    private String avatar;
 
-    public User(String username, String password) {
+    public User(String username, String password,String avatar) {
         this.username = username;
         this.password = password;
     }

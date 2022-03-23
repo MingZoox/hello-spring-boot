@@ -6,5 +6,5 @@ import lombok.Data;
 public class UserDTO {
     private String username;
     private String role;
-    private String avatarUri;
+    private String avatar;
 }

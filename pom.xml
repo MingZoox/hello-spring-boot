@@ -72,6 +72,13 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+        <!--azure storage-->
+        <dependency>
+            <groupId>com.azure.spring</groupId>
+            <artifactId>azure-spring-boot-starter-storage</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
         <!-- jwt -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
